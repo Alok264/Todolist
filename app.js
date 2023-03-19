@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 const lodash = require("lodash");
 const todayDate = require(__dirname+"/views/date.js"); // userbuilt module/package
 const MongoClient = require("mongodb").MongoClient;
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000;
 
 const uri = process.env.MONGO_CONNECTION_STRING;
 const client = new MongoClient(uri);
@@ -218,7 +218,7 @@ app.post('/delete', function(req, res){
 client.connect(err => {
     if(err){ console.error(err); return false;}
     // connection to mongo is successful, listen for requests
-    app.listen(PORT || 8292, () => {
+    app.listen(PORT, () => {
         console.log("listening for requests");
     })
 });
