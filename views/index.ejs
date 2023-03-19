@@ -1,0 +1,35 @@
+<%- include('header'); -%>
+    <div class="box" id="heading">
+        <h1><%= foo %></h1>
+    </div>
+    <div class="time box">
+        <h3 ><%= TodayDate %></h3>
+        <h5 id="clock"></h5>
+    </div>
+    <div class="box">
+        
+            <%for(var i = 0; i<listitem.length; i++){%>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" value="<%= listitem[i]._id %>" name="check" onChange="this.form.submit()">
+                    <p><%= listitem[i].Name %></p>
+                </div>
+                <input type="hidden" name="ListName" value="<%= foo %>"></input>
+            </form>
+            <%}%>
+        <form action="/" method="post" class="item">
+            <input type="text" name="list" id="list" placeholder="Enter list" autocomplete="off"><br>
+            <button type="submit" class="submit-button" name="button" value=<%= foo  %>>+</button>  <%/* value id used to identify in case of using this template for other page. */%>
+            <%# Here we are using this for both todo page and work page. So we are adding the page name foo to the value of button. so that we can get which page button is submitted. %>
+            <%# name = button is used as a key to button.%>
+        </form>
+    </div>
+    
+    <div class="reset-delete">
+        <form action="/reset" method="post">
+            <div class="reset-list">
+                <button type="submit" class="btn btn-lg btn-warning reset-button" name="button" value=<%= foo %>>Reset</button>
+            </div>
+        </form>
+    </div>
+    <%- include('footer'); -%>
